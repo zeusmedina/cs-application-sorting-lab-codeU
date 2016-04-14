@@ -155,11 +155,11 @@ To classify the runtime of merge sort, it helps to think about the algorithm in 
 
 The following figure shows these steps.
 
-[!alt]()
+[!alt](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure1.png?token=ABy37Z8c8mAN7Amv8qAbux0dK3ofQo5Qks5XGR1gwA%3D%3D)
 
 The first step copies each of the elements once, so it is linear.  The third step also copies each element once, so it is also linear.  Now we need to figure out the complexity of step 2.  To do that, it helps to looks at a different picture of the computation, which shows the levels of recursion:
 
-[!alt]()
+[!alt](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure2.png?token=ABy37VnXZZoh3V_anfMWyGF7Ef7QLKJiks5XGR1qwA%3D%3D)
 
 At the top level, we have `1` list with `n` elements.  At the next level there are `2` lists with `n/2` elements.  Then `4` lists with `n/4` elements, and so on until we get to `n` lists with `1` element.
 
@@ -204,7 +204,7 @@ To see how this works, imagine you have a deck of cards where each card contains
 
 At this point each bucket contains one element, and the buckets are sorted in ascending order.  The following diagram shows an example with 3-letter words:
 
-[!alt]()
+[!alt](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure3.png?token=ABy37ZLLUai_orjtLdnCe1tsq9RWmEk7ks5XGR16wA%3D%3D)
 
 The top show shows the unsorted words.  The second rows shows what the buckets look like after the first pass.  The words in each bucket begin with the same letter.
 
