@@ -1,6 +1,11 @@
 tags:
-  - a tag
+  - Sort algorithms
+  - Analysis of algorithms
+  - Insertion sort
+  - Merge sort
+  - Heap sort
+  - Analysis of space requirements
 languages:
-  - a language
+  - Java
 resources: 
-  - 0
+  - 8
