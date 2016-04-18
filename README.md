@@ -1,6 +1,6 @@
 # cs-application-sorting-lab
 
-## Learning goals 
+## Learning goals
 
 1.  Implement and analyze sort algorithms.
 2.  Use a heap to implement a PriorityQueue.
@@ -35,7 +35,7 @@ Here's our implementation of insertion sort in Java:
 public class ListSorter<T> {
 
 	public void insertionSort(List<T> list, Comparator<T> comparator) {
-	
+
 		for (int i=1; i < list.size(); i++) {
 			T elt_i = list.get(i);
 			int j = i;
@@ -61,14 +61,14 @@ This example shows how to call this function with a `List` of `Integer`:
 
 ```java
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(3, 5, 1, 4, 2));
-		
+
 		Comparator<Integer> comparator = new Comparator<Integer>() {
 			@Override
 			public int compare(Integer n, Integer m) {
 				return n.compareTo(m);
 			}
 		};
-		
+
 		ListSorter<Integer> sorter = new ListSorter<Integer>();
 		sorter.insertionSort(list, comparator);
 		System.out.println(list);
@@ -105,9 +105,9 @@ When you check out the repository for this lab, you should find a file structure
 
 In the subdirectory `javacs-lab12/src/com/flatironschool/javacs` you'll find the source files for this lab:
 
-*  `ListSorter.java`, 
+*  `ListSorter.java`,
 
-*  `ListSorterTest.java`, 
+*  `ListSorterTest.java`,
 
 Run `ant build` to compile the source files, then run `ant test` to run `ListSorterTest`.  As usual, it should fail, because you have work to do.
 
@@ -155,11 +155,11 @@ To classify the runtime of merge sort, it helps to think about the algorithm in 
 
 The following figure shows these steps.
 
-![alt tag](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure1.png?token=ABy37Z8c8mAN7Amv8qAbux0dK3ofQo5Qks5XGR1gwA%3D%3D)
+![alt tag](https://curriculum-content.s3.amazonaws.com/javacs/cs-application-sorting-lab/figure1.png)
 
 The first step copies each of the elements once, so it is linear.  The third step also copies each element once, so it is also linear.  Now we need to figure out the complexity of step 2.  To do that, it helps to looks at a different picture of the computation, which shows the levels of recursion:
 
-![alt tag](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure2.png?token=ABy37VnXZZoh3V_anfMWyGF7Ef7QLKJiks5XGR1qwA%3D%3D)
+![alt tag](https://curriculum-content.s3.amazonaws.com/javacs/cs-application-sorting-lab/figure2.png)
 
 At the top level, we have `1` list with `n` elements.  At the next level there are `2` lists with `n/2` elements.  Then `4` lists with `n/4` elements, and so on until we get to `n` lists with `1` element.
 
@@ -204,7 +204,7 @@ To see how this works, imagine you have a deck of cards where each card contains
 
 At this point each bucket contains one element, and the buckets are sorted in ascending order.  The following diagram shows an example with 3-letter words:
 
-![alt tag](https://raw.githubusercontent.com/learn-co-curriculum/cs-application-sorting-lab/wip-master/figure3.png?token=ABy37ZLLUai_orjtLdnCe1tsq9RWmEk7ks5XGR16wA%3D%3D)
+![alt tag](https://curriculum-content.s3.amazonaws.com/javacs/cs-application-sorting-lab/figure3.png)
 
 The top show shows the unsorted words.  The second rows shows what the buckets look like after the first pass.  The words in each bucket begin with the same letter.
 
@@ -219,7 +219,7 @@ There are many variations on radix sort, and many ways to implement each one.  Y
 
 ## Heap sort
 
-In addition to radix sort, which applies when the things you are sorted are bounded in size, there is one other special-purpose sorting algorithm you might encounter: bounded heap sort, which is useful if you are working with a very large dataset and you want to report the "Top 10", or "Top k" for some value of `k` much smaller than `n`.
+In addition to radix sort, which applies when the things you want to sort are bounded in size, there is one other special-purpose sorting algorithm you might encounter: bounded heap sort. Bounded heap sort is useful if you are working with a very large dataset and you want to report the "Top 10", or "Top k" for some value of `k` much smaller than `n`.
 
 For example, suppose you are monitoring a Web service that handles a billion transactions per day.  At the end of each day, you want to report the `k` biggest transactions (or slowest, or any other superlative).  One option is to store all transactions, sort them at the end of the day, and select the top `k`.  That would take time proportional to `n log n`, and it would be very slow because we probably can't fit a billion transactions in the memory of a single program.  We would have to use an "out of core" sort algorithm.  You can [read about "external sorting" here](https://en.wikipedia.org/wiki/External_sorting).
 
@@ -237,7 +237,7 @@ To understand heap sort, you have to understand a heap, which is a data structur
 
 *  In a heap, every node, `x`, has the "heap property": all nodes in both subtrees of `x` are greater than `x`.
 
-The smallest element in a heap is always at the root, so we can find it in constant time.  Adding and removing elements from a heap takes time proportional to the height of the tree `h`.  And it is easy to keep a heap balanced, so `h` is proportional to `log n`.  You can [read more about heaps here](https://en.wikipedia.org/wiki/Heap_(data_structure)).  
+The smallest element in a heap is always at the root, so we can find it in constant time.  Adding and removing elements from a heap takes time proportional to the height of the tree `h`.  And it is easy to keep a heap balanced, so `h` is proportional to `log n`.  You can [read more about heaps here](https://en.wikipedia.org/wiki/Heap_(data_structure)).
 
 The Java `PriorityQueue` is implemented using a heap.  `PriorityQueue` provides the methods specified in the `Queue` interface, including `offer` and `poll`:
 
@@ -275,7 +275,7 @@ Using a heap with the smallest element at the top, we can keep track of the larg
 
 *  Branch 1: Adding an element to the heap is `O(log k)`.
 
-*  Branch 2: Finding the smallest element in the heap is `O(1)`.  
+*  Branch 2: Finding the smallest element in the heap is `O(1)`.
 
 *  Branch 3: Removing the smallest element is `O(log k)`.  Adding `x` is also `O(log k)`.
 
@@ -286,7 +286,7 @@ In the worst case, if the elements appear in ascending order, we always run Bran
 
 ## Space complexity
 
-Until now we have talked a lot about runtime analysis, but for many algorithms we are also concerned about space.  
+Until now we have talked a lot about runtime analysis, but for many algorithms we are also concerned about space.
 For example, one of the drawbacks of merge sort is that it makes copies of the data.  In our implementation, the total amount of space it allocates is `O(n log n)`.  With a more clever implementation, you can get the space requirement down to `O(n)`.
 
 In contrast, insertion sort doesn't copy the data because it sorts the elements in place.  It uses temporary variables to compare two elements at a time, and it uses a few other local variables.  But its space use doesn't depend on `n`.
