@@ -111,16 +111,16 @@ In the subdirectory `javacs-lab12/src/com/flatironschool/javacs` you'll find the
 
 Run `ant build` to compile the source files, then run `ant test` to run `ListSorterTest`.  As usual, it should fail, because you have work to do.
 
-In `ListSorter.java`, we're provided an outline of two methods, `mergeSort` and `mergeSortHelper`:
+In `ListSorter.java`, we've provided an outline of two methods, `mergeSortInPlace` and `mergeSort`:
 
 ```java
-	public void mergeSort(List<T> list, Comparator<T> comparator) {
+	public void mergeSortInPlace(List<T> list, Comparator<T> comparator) {
 		List<T> sorted = mergeSortHelper(list, comparator);
 		list.clear();
 		list.addAll(sorted);
 	}
 
-	private List<T> mergeSortHelper(List<T> list, Comparator<T> comparator) {
+	private List<T> mergeSort(List<T> list, Comparator<T> comparator) {
 	   // TODO: fill this in!
 	   return null;
 	}
